@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:text="'안녕하세요'+${msg}">안녕하세요</p> <!--text는 글자로 다 받아온다.-->
+<p th:utext="'안녕하세요'+${msg}">안녕하세요</p><!-- utext는 태그를 인식해서 불러온다.-->
+
+<input th:value="${msg}"/>
+<!--안녕하세요 hello-->
+
+<p th:with="abc=${msg}" th:utext="${abc}"></p> <!--변수 변경-->
+
+<!--switch - case-->
+<div th:switch="${name}">
+    <p th:case="kim">kim</p>
+    <p th:case="lee">lee</p>
+    <p th:case="*">아무것도 아님</p>
+</div>
+
+<!--if unless (if~else) 위 아래 조건문이 같아야 한다.-->
+<p th:if="${name}=='kim'" th:text="${name}"></p>
+<p th:unless="${name}=='kim'">kim이 아님</p>
+
+<!--반복문 th:each-->
+<ul>
+    <li th:each="c:${coffee}" th:text="${c}"/>
+</ul>
+
+
+<!--실습1-->
+<p th:if="${age}<20" th:text="${age}+'세는 미성년자입니다.'"></p>
+<p th:unless="${age}<20" th:text="${age}+'세는 성인입니다.'"></p>
+
+<!--실습2-->
+<table border="1">
+    <tr>
+        <th>이름</th>
+        <th>나이</th>
+    </tr>
+    <tr th:each="person : ${people}">
+        <td th:text="${person[0]}"></td>
+        <td th:text="${person[1]}"></td>
+    </tr>
+</table>
+
+
+
+
+</body>
+</html>
