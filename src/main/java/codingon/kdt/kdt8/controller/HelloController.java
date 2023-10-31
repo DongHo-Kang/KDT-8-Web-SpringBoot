@@ -44,13 +44,6 @@ public class HelloController {
         people.add(new String[]{"hong","30"});
         people.add(new String[]{"park","40"});
         people.add(new String[]{"shin","50"});
-//
-//        people[0] = new ArrayList<>(Arrays.asList("kim", "10"));
-//        people[1] = new ArrayList<>(Arrays.asList("lee", "20"));
-//        people[2] = new ArrayList<>(Arrays.asList("hong", "30"));
-//        people[3] = new ArrayList<>(Arrays.asList("park", "40"));
-//        people[4] = new ArrayList<>(Arrays.asList("shin", "50"));
-
 
         model.addAttribute("people",people);
 
