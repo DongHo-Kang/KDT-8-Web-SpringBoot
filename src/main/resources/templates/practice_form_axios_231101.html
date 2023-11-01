@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    function axios1(){
+        var form = document.getElementById('form-axios');
+        axios.post(`/axios/signup1`, {name:form.name.value, gender: form.gender.value, year: form.year.value, month: form.month.value, day: form.day.value, hobby: form.hobby.value})
+        .then((res)=>{
+            console.log(res);
+            console.log(res.data);
+        });
+    }
+</script>
+<div>
+    <form action="/axios/signup" method="post" id="form-axios">
+        <p>이름<input type="text" name="name"></p>
+        <br>
+        <p>성별<input type="radio" value="남자" name="gender">남자 <input type="radio" value="여자" name="gender">여자</p>
+        <br>
+        <p>생년월일
+            <select name="year">
+                <option>1990</option>
+                <option>1992</option>
+                <option>1993</option>
+                <option>1994</option>
+                <option>1995</option>
+                <option>1996</option>
+                <option>1997</option>
+                <option>1998</option>
+                <option>1999</option>
+                <option>2000</option>
+            </select>년
+            <select name="month">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+            </select>월
+            <select name="day">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+            </select>일</p>
+        <br>
+        <p>관심사<input type="checkbox" value="여행" name="hobby">여행
+            <input type="checkbox" value="패션" name="hobby">패션
+            <input type="checkbox" value="음식" name="hobby">음식</p>
+        <br>
+        <button type="button" onclick="axios1();">회원가입</button>
+    </form>
+</div>
+</body>
+</html>
