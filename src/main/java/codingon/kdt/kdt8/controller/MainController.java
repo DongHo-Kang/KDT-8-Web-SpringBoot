@@ -99,4 +99,71 @@ public class MainController {
         return msg;
     }
 
+    @GetMapping("/axios/response1")
+    @ResponseBody
+    public String axiosResponse1(@RequestParam String name, @RequestParam String age){
+        String msg = "이름: " + name + ", 나이: " + age;
+        return msg;
+    }
+
+    @GetMapping("/axios/response2")
+    @ResponseBody
+    public String axiosResponse2(UserDTO userDTO){
+        String msg = "이름: " + userDTO.getName() + ", 나이: "+ userDTO.getAge();
+        return msg;
+    }
+
+    @PostMapping("/axios/response3")
+    @ResponseBody
+    //@RequstParam required 기본값이 true
+    //axios로 값을 전달하게 될 경우 파라미터로 값이 들어오지 않는다.(Post로 보냈을 때)
+    //값이 들어오지 않는데, @RequestParasm의 required가 기본값이 true이기 때문에 오류
+    public String axiosResponse3(@RequestParam String name, @RequestParam String age){
+        String msg = "이름: " + name + ", 나이: "+ age;
+        return  msg;
+
+    }
+
+    @PostMapping("/axios/response4")
+    @ResponseBody
+    public String axiosResponse4(UserDTO userDTO){
+        String msg = "이름:" + userDTO.getName() + ", 나이: "+ userDTO.getAge();
+        return msg;
+    }
+
+    @PostMapping("/axios/response5")
+    @ResponseBody
+    public String axiosResponse5(@RequestBody UserDTO userDTO){
+        String msg = "이름:" + userDTO.getName() + ", 나이: "+ userDTO.getAge();
+        return msg;
+    }
+    //@RequestParam @ModelAttribute : 매개변수(파라미터)로 전달된 친구들을 변환
+    //@RequestBody: json 형태의 데이터 (데이터)
+
+    @GetMapping("/axios/vo/response2")
+    @ResponseBody
+    public String axiosVoResponse2(UserVO userVO){
+       //@ModelAttribute로 값이 들어갈 때는 setter 함수를 실행해서 값을 넣어주기 때문에
+       //setter 함수가 없는 UserVO에는 값이 들어갈 수 없다.
+        String msg = "이름: "+ userVO.getName() + ", 나이: "+ userVO.getAge();
+        return msg;
+    }
+
+    @PostMapping("/axios/vo/response4")
+    @ResponseBody
+    public String axiosVoResponse4(UserVO userVO){
+        String msg = "이름: "+ userVO.getName() + ", 나이: "+ userVO.getAge();
+        return msg;
+    }
+
+    @PostMapping("/axios/vo/response5")
+    @ResponseBody
+    public String axiosVoResponse5(@RequestBody UserVO userVO){
+        //@RequestBody로 값을 전달할때 userVO에 setter 함수가 없어도 값이 들어간다.
+        //@RequestBody는 setter 함수 실행이 아니라 각각의 필드(변수)에 직접적으로 값을 주입하면서 매핑
+        //@ModelAttribute가 setter 함수를 실행해 값을 넣어준다면
+        //@RequestBody는 각각의 필드(변수)에 직접적으로 값을 주입한다. 필드에 내장된 set 함수를 실행
+        String msg = "이름: "+ userVO.getName() + ", 나이: "+ userVO.getAge();
+        return msg;
+    }
 }
